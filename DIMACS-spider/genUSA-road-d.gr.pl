@@ -36,8 +36,9 @@ system "mkdir -p $DIR";
 sub DOGEN {
     $EXT = $_[0]; # graph instance (e.g., CTR, BAY, etc.)
     system "cd $DIR; echo bye | wget $URL.$EXT.gr.gz";
-#   system "cd $DIR; echo bye | ftp $URL.$EXT.co.gz";
     system "gunzip $DIR/*.$EXT.gr.gz";
+    system "cd $DIR; echo bye | wget $URL.$EXT.co.gz";
+    system "gunzip $DIR/*.$EXT.co.gz";
 }
 
 # download instances
