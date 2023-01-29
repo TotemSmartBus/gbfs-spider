@@ -12,7 +12,12 @@ fails = []
 
 def save_data(link, code, target_dir, progress):
     print(progress, code, ' downloading.')
-    resp = requests.get(link, stream=True)
+    try:
+       resp = requests.get(link, stream=True)
+    except:
+        print(progress, 'Error downloading')
+        fails.append(code)
+        return
     if not resp.ok:
         print(progress, 'Error downloading')
         fails.append(code)
