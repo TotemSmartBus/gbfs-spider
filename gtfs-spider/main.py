@@ -9,6 +9,9 @@ OVERWRITE = False
 
 fails = []
 
+# TODO meta-data json 下载到指定目录
+# TODO 订阅更新数据源
+
 
 def save_data(link, code, target_dir, progress):
     print(progress, code, ' downloading.')
@@ -65,6 +68,8 @@ if __name__ == '__main__':
 
         with open(join(source_dir, filename), 'r') as f:
             json_data = json.load(f)
+            with open(join(target_dir, 'meta.json'), 'w') as fj:
+                fj.write(json.dumps(json_data))
             if json_data['urls']['latest']:
                 url = json_data['urls']['latest']
                 save_data(url, code, target_dir, progress)
