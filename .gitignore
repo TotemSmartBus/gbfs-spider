@@ -2,3 +2,6 @@
 /.idea/
 
 /venv/
+
+/gtfs-spider/mobility-database-catalogs/
+/gtfs-spider/datasets/
